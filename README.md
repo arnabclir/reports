@@ -4,17 +4,19 @@ This repository contains detailed reports on software installation and compatibi
 
 ## Reports
 
-### 1. Google Gemini CLI Installation Failure
+### 1. Google Gemini CLI Installation ✅ Resolved
 **File:** [`gemini-cli-installation-summary.md`](./gemini-cli-installation-summary.md)
 
-**Summary:** Installation of `@google/gemini-cli` failed due to persistent network timeouts when downloading dependencies and compiling native modules via node-gyp.
+**Summary:** Initially failed due to network timeouts and native module compilation issues. **Now successfully installed** using `--ignore-scripts` flag with a Termux workaround.
 
-**Key Issues:**
-- Native module `tree-sitter-bash` build failed with ETIMEDOUT errors
-- Multiple installation methods attempted (npm global, npx, local tarball, mirror registries)
-- All attempts failed due to network connectivity issues with npmjs.org
+**Key Issues (Resolved):**
+- Native module `tree-sitter-bash` build failed → **Resolved** with `--ignore-scripts`
+- Network connectivity issues → **Resolved** when network conditions improved
+- Clipboardy module doesn't detect Termux → **Workaround** with `TERMUX_VERSION=1`
 
-**Status:** Installation failed - Requires stable network connection to retry
+**Status:** ✅ **Installed Successfully**
+
+**Workaround:** Run with `TERMUX_VERSION=1 gemini "<prompt>"`
 
 **Platform:** Linux 6.17.0-PRoot-Distro (Termux), Node.js v25.2.1, npm v11.6.2
 

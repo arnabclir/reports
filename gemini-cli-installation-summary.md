@@ -50,7 +50,7 @@ npm error gyp ERR! stack at TLSWrap.onStreamRead (node:internal/stream_base_comm
 3. **Build from source**: Clone GitHub repository and build locally (requires git)
 
 ## Current Status
-**Installation failed** due to persistent network timeouts during dependency downloads and native module compilation.
+**✅ Installation Successful** - After network conditions improved, installation succeeded with `--ignore-scripts` flag and a Termux workaround.
 
 ## Files Downloaded
 - `/home/arnab/package/` - Extracted gemini-cli-0.23.0.tgz
@@ -61,3 +61,66 @@ npm error gyp ERR! stack at TLSWrap.onStreamRead (node:internal/stream_base_comm
 2. Try installing from a different network location
 3. Configure npm to use a local mirror or proxy if available
 4. Install dependencies separately to troubleshoot specific problematic packages
+
+---
+
+## ✅ SUCCESSFUL INSTALLATION (2026-01-12)
+
+### Resolution Summary
+
+After network conditions improved, the installation was successful using the `--ignore-scripts` flag to bypass native module compilation issues.
+
+### Final Installation Command
+
+```bash
+npm install -g @google/gemini-cli --ignore-scripts
+```
+
+**Result:** ✅ Successfully installed 582 packages in 4 minutes
+
+### Termux Workaround Required
+
+The `clipboardy` dependency module does not properly detect Termux/Android environment. To use the CLI, you must set the `TERMUX_VERSION` environment variable:
+
+```bash
+TERMUX_VERSION=1 gemini "<your prompt>"
+```
+
+### Verification
+
+```bash
+TERMUX_VERSION=1 gemini --version
+# Output: 0.23.0
+```
+
+### Authentication Required
+
+Before using the CLI, configure authentication by setting one of these environment variables:
+
+- `GEMINI_API_KEY` - Your Google Gemini API key
+- `GOOGLE_GENAI_USE_VERTEXAI` - For Vertex AI authentication
+- `GOOGLE_GENAI_USE_GCA` - For Google Cloud Access authentication
+
+Or configure in `~/.gemini/settings.json`.
+
+### Example Usage
+
+```bash
+# Set API key
+export GEMINI_API_KEY="your-api-key-here"
+
+# Run with Termux workaround
+TERMUX_VERSION=1 gemini "explain quantum computing in simple terms"
+```
+
+### Permanent Alias (Optional)
+
+To avoid typing `TERMUX_VERSION=1` every time, add an alias to `~/.bashrc`:
+
+```bash
+echo 'alias gemini="TERMUX_VERSION=1 gemini"' >> ~/.bashrc
+source ~/.bashrc
+
+# Now you can run simply:
+gemini "your prompt here"
+```
