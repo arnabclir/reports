@@ -93,22 +93,6 @@ TERMUX_VERSION=1 gemini --version
 # Output: 0.23.0
 ```
 
-### Authentication Required
-
-Before using the CLI, configure authentication by setting one of these environment variables:
-
-- `GEMINI_API_KEY` - Your Google Gemini API key
-- `GOOGLE_GENAI_USE_VERTEXAI` - For Vertex AI authentication
-- `GOOGLE_GENAI_USE_GCA` - For Google Cloud Access authentication
-
-Or configure in `~/.gemini/settings.json`.
-
-### Example Usage
-
-```bash
-# Set API key
-export GEMINI_API_KEY="your-api-key-here"
-
 # Run with Termux workaround
 TERMUX_VERSION=1 gemini "explain quantum computing in simple terms"
 ```
