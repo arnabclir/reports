@@ -2,8 +2,8 @@
 
 A practical guide for using Python in the Termux Android terminal environment.
 
-**Last Updated:** 2025-01-14
-**Tested Environment:** Termux on Android (Linux 6.1.118-android14)
+**Last Updated:** 2026-01-14
+**Tested Environment:** Termux on Android (Linux 5.10.233-android12)
 **Python Version:** 3.12.12
 
 ---
